@@ -1,0 +1,45 @@
+{% comment %} {% load static %}
+<form method="POST" action="{% url 'login'%}">
+    {% csrf_token %}
+    {{form.as_p}}
+    {{form.username.label_tag}}
+    {{form.username}}
+    {{form.password.label_tag}}
+    {{form.password}}
+    <input type="submit" value="Login">
+</form> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  {% load static %}
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  </head>
+<body>
+<div class="login-box" style="">
+  <h1>Login</h1>
+  <form class="login-form" method="post">
+  {% csrf_token %}
+  <div class="textbox">
+    <i class="fas fa-user"></i>
+    {{form.username.label_tag}}
+    {{form.username}}
+  </div>
+
+  <div class="textbox">
+    <i class="fas fa-lock"></i>
+    {{form.password.label_tag}}
+    {{form.password}}
+  </div>
+  <div>
+    <input type="submit" class="btn" style="color:white;" value="Login">
+  </div>  
+  <div>
+    <a href="" style="color: white;">Click Here  to Sign Up</a>
+  </div>
+  </form>
+</div>
+</body>
+</html>
