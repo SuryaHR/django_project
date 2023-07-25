@@ -9,28 +9,35 @@
 <body>
 <div class="login-box" style="">
   <h1>Login</h1>
-  <form class="login-form" method="post">
+  {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+  <form class="login-form" method="POST">
   {% csrf_token %}
   <div class="textbox">
     <i class="fas fa-user"></i>
-    {{form.username.label_tag}}
-    {{form.username}}
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" required>
   </div>
 
   <div class="textbox">
     <i class="fas fa-lock"></i>
-    {{form.password.label_tag}}
-    {{form.password}}
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required>
   </div>
   <br>
   <div>
     <input type="submit" class="btn" style="color:white;" value="Login">
-  </div>  
+  </div> 
+</form> 
   <br>
-  <div>
-   <b> Don't Have Account ? &nbsp <a href="" style="color: white;"> <span><u>Sign Up<u></span></a><b>
-  </div>
-  </form>
+<div>
+    <b> Don't Have Account ? &nbsp <a href="{% url 'foodapp:signup' %}" style="color: white;"> <span><u>Sign Up<u></span></a><b>
+</div>
 </div>
 </body>
 </html>
