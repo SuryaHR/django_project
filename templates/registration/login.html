@@ -1,14 +1,3 @@
-{% comment %} {% load static %}
-<form method="POST" action="{% url 'login'%}">
-    {% csrf_token %}
-    {{form.as_p}}
-    {{form.username.label_tag}}
-    {{form.username}}
-    {{form.password.label_tag}}
-    {{form.password}}
-    <input type="submit" value="Login">
-</form> {% endcomment %}
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -33,11 +22,13 @@
     {{form.password.label_tag}}
     {{form.password}}
   </div>
+  <br>
   <div>
     <input type="submit" class="btn" style="color:white;" value="Login">
   </div>  
+  <br>
   <div>
-    <a href="" style="color: white;">Click Here  to Sign Up</a>
+   <b> Don't Have Account ? &nbsp <a href="" style="color: white;"> <span><u>Sign Up<u></span></a><b>
   </div>
   </form>
 </div>

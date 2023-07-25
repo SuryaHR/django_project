@@ -5,4 +5,5 @@ app_name = "foodapp"
 urlpatterns = [
     path('',views.index,name="home"),
     path('login/', views.login_view),
+    path('register/', views.RegistrationView.as_view(), name="register"),
 ]
