@@ -20,13 +20,6 @@
     <title>FOOD ZONE | Home</title>
 	<link rel="shortcut icon" href="{% static 'images/favico.png' %}" type="image/x-icon">
   </head>
-  {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-  {% endif %}
     <nav class="navbar navbar-expand-lg navbar-light" style="position: fixed;width:100%;background-image: linear-gradient(180deg,#FFF,#FFF);box-shadow: 0px 0px 7px 0px #404040;">
       <a class="navbar-brand" href="/"><h2 style="color:black;font-family:sans-serif;font-weight:bolder;"><b>FOOD ZONE</b></h2></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +40,7 @@
             </li>
           {% else %}
             <li class="nav-item active">
-                <a class="nav-link" id="nav-link" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
+                <a class="nav-link" id="nav-link" href="{% url 'foodapp:login' %}">Login <span class="sr-only">(current)</span></a>
             </li>
           {% endif %}
         </ul>

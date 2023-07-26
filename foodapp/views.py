@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LogoutView
 from django.contrib import messages
 from django.urls import reverse_lazy
 from .models import Food, Restaurant
 from django.views.generic import CreateView, ListView
+from django.contrib.auth import authenticate, login
 
 from django.urls import reverse_lazy
 from .forms import RegistrationForm
@@ -13,14 +14,25 @@ from .forms import RegistrationForm
 def index(request):
     return render(request,'foodapp/index.html')
 
-class CustomLoginView(LoginView):
-    template_name = 'login.html'
-    authentication_form = AuthenticationForm
-    success_url = reverse_lazy('foodapp:home')
+def custom_login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, 'Login successful!')
+                return redirect('foodapp:home')
+            else:
+                messages.error(request, 'Invalid username or password. Please try again.')
+        else:
+            messages.error(request, 'Invalid username or password. Please try again.')
+    else:
+        form = AuthenticationForm()
 
-    def form_invalid(self, form):
-        messages.error(self.request, 'Invalid username or password. Please try again.')
-        return super().form_invalid(form)
+    return render(request, 'foodapp/login.html', {'form': form})
 
 def registration_view(request):
     if request.method == 'POST':
