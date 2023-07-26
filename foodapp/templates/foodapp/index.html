@@ -39,7 +39,7 @@
             <a class="nav-link" id="nav-link" href="{% url 'foodapp:home'%}">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" id="nav-link" href="allfood">Restaurants <span class="sr-only">(current)</span></a>
+            <a class="nav-link" id="nav-link" href="{% url 'foodapp:restaurant_list'%}">Restaurants <span class="sr-only">(current)</span></a>
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item active ml-auto">
@@ -57,7 +57,7 @@
       <div id="banner">
         <div id="banner-text">
             <h1>FOOD ZONE</h1>
-            <p>Find your delicious hot food!</p>
+            <p><b>Find your delicious hot food!</b></p>
         </div>
     </div>
     </main>
