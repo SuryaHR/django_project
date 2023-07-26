@@ -1,10 +1,11 @@
+{% comment %} {% load static %}
 <main style="width:100%;margin-top: 0;margin-bottom: 10px;background-color:#FFF;">
     <div class="" style="max-width:100%;padding-top:20px;padding-bottom:20px;">
-      <img class="mySlides" src="{% static 'images/slider1.jpg' %}" height="400px" style="width:100%">
-      <img class="mySlides" src="{% static 'images/slider2.jpg' %}" height="400px" style="width:100%">
+      <img class="mySlides" src="{% static 'images/image1.png' %}" height="400px" style="width:100%">
+      {% comment %} <img class="mySlides" src="{% static 'images/slider2.jpg' %}" height="400px" style="width:100%">
       <img class="mySlides" src="{% static 'images/slider3.jpg' %}" height="400px" style="width:100%">
-      <img class="mySlides" src="{% static 'images/slider4.jpg' %}" height="400px" style="width:100%">
-      <div class="" style="position:static;">
+      <img class="mySlides" src="{% static 'images/slider4.jpg' %}" height="400px" style="width:100%"> {% endcomment %}
+      {% comment %} <div class="" style="position:static;">
         {% for restaurant in restaurant_list %}
         <div class="card">
         <img src="{{restaurant.restaurant_image.url}}" alt="" style="height: 200px;width:100%;">
@@ -12,4 +13,12 @@
         {% endfor %}
       </div>
     </div>
-</main>
+</main> {% endcomment %}
+
+
+<div class="card">
+    {% for restaurant in restaurant_list %}
+    <img src="{{restaurant.restaurant_image.url}}" alt="{{restaurant.restaurant_image}}" style="height: 25%;width:25%;">
+    <h1>{{restaurant.restaurant_name}}</h1> 
+    {% endfor %}
+</div>

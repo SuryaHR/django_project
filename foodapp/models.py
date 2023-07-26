@@ -8,7 +8,7 @@ class Restaurant(models.Model):
 
 
     def __str__(self):
-        return self.name
+        return self.restaurant_name
     
 class Food(models.Model):
     food_name = models.CharField(max_length=30)
@@ -16,5 +16,5 @@ class Food(models.Model):
     food_image = models.ImageField(upload_to='media',default='')
 
     def __str__(self):
-        return self.name
+        return self.food_name
 
